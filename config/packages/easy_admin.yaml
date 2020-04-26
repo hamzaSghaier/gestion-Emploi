@@ -1,0 +1,35 @@
+easy_admin:
+    site_name: 'ensiegnement Dashobord'
+    entities:
+        # List the entity class name you want to manage
+
+        Matiere:
+          class: App\Entity\Matiere
+
+        Promotion:
+            class: App\Entity\Promotion
+
+        Specialite:
+            class: App\Entity\Specialite
+
+        Groupe:
+            class: App\Entity\Groupe
+
+        Affecter:
+            class: App\Entity\Affecter
+
+        Enseignant:
+            class: App\Entity\Enseignant
+            label: "Enseignant"
+            form:
+                fields:
+                    - {type: 'group', icon: 'pencil', label: 'Basic Information', css_class: 'col-lg-7'}
+                    - nom_enseignant
+                    - prenom_enseignant
+                    - Grade
+                    - {type: 'group', icon: 'th-list', label: 'Other Information', css_class: 'col-lg-5'}
+                    - numTel
+                    - lieu_travail
+                    - Cin
+        Disponibile:
+            class: App\Entity\Disponibile
