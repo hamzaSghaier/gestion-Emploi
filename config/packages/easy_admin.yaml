@@ -20,22 +20,22 @@ easy_admin:
         - {label: "Gestion des classes"}
 
 
-        - label: "Les Promotion"
-          icon : "plus"
+        - label: "Les Promotions"
+          icon : "calendar-alt"
           children:
             - {entity: Promotion, label: "liste des promotions", icon: "th-list"}
             - {entity: Promotion, label: "Ajouter un promotion", icon: "plus", params: {action: 'new'}}
 
 
 
-        - label: "Les Specialite"
-          icon : "plus"
+        - label: "Les Specialites"
+          icon : "address-card"
           children:
             - {entity: Specialite, label: "liste des specialités", icon: "th-list"}
             - {entity: Specialite, label: "Ajouter un specialité", icon: "plus", params: {action: 'new'}}
 
         - label: "Les Classes"
-          icon : "plus"
+          icon : "chalkboard"
 
           children:
             - {entity: Groupe, label: "liste des groupe", icon: "th-list"}
