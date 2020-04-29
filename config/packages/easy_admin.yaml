@@ -1,10 +1,72 @@
 easy_admin:
+    design:
+        menu:
+        - {label: "Global"}
+        - label: "Les Matieres"
+          icon : "book-reader"
+
+          children:
+            - {entity: Matiere, label: "liste des matières", icon: "th-list"}
+            - {entity: Matiere, label: "Ajouter Matière", icon: "plus", params: {action: 'new'}}
+
+        - label: "Les Enseignants"
+          icon : "chalkboard-teacher"
+          children:
+            - {entity: Enseignant, label: "List enseignats", icon: "th-list"}
+            - {entity: Enseignant, label: "Ajouter un enseignant", icon: "plus",params: {action: 'new'}}
+            - {entity: Disponibile, label: "Disponibilité", icon: "pencil"}
+
+
+        - {label: "Gestion des classes"}
+
+
+        - label: "Les Promotion"
+          icon : "plus"
+          children:
+            - {entity: Promotion, label: "liste des promotions", icon: "th-list"}
+            - {entity: Promotion, label: "Ajouter un promotion", icon: "plus", params: {action: 'new'}}
+
+
+
+        - label: "Les Specialite"
+          icon : "plus"
+          children:
+            - {entity: Specialite, label: "liste des specialités", icon: "th-list"}
+            - {entity: Specialite, label: "Ajouter un specialité", icon: "plus", params: {action: 'new'}}
+
+        - label: "Les Classes"
+          icon : "plus"
+
+          children:
+            - {entity: Groupe, label: "liste des groupe", icon: "th-list"}
+            - {entity: Groupe, label: "Ajouter un groupe", icon: "plus", params: {action: 'new'}}
+
+
+        - {label: "Affectations des matières"}
+        - {entity: Affecter,label: 'Affectations', icon: "pencil"}
+
+        - {label: "Paramètres"}
+        - {entity: User,label: 'Utilisateurs', icon: "user"}
+
+
+
+
     site_name: '<img src="../images/logoEcole.png" id="icon" width="10%" alt="User Icon" />    Gestion des emplois du temps'
+    user:
+        display_name: false
+        display_avatar: true
+        name_property_path: 'email'
+   
+   
+   
+   
     entities:
         # List the entity class name you want to manage
 
         Matiere:
           class: App\Entity\Matiere
+        User:
+          class: App\Entity\User
 
         Promotion:
             class: App\Entity\Promotion
