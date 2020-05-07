@@ -4,9 +4,14 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity("email"),
  */
 class User implements UserInterface
 {
@@ -19,11 +24,14 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email
+     * message = "The email '{{ value }}' is not a valid email."
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
+     * @Assert\NotBlank()
      */
     private $roles = [];
 
@@ -48,6 +56,10 @@ class User implements UserInterface
         $this->email = $email;
 
         return $this;
+    }
+    public function __construct()
+    {
+        $this->roles = array('ROLE_USER');
     }
 
     /**

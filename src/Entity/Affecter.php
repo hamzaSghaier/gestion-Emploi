@@ -3,10 +3,19 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AffecterRepository")
+ * @UniqueEntity(
+ *     fields={"matiere", "groupe"},
+ *     errorPath="matiere",
+ *     message="This matiere is already in use on that groupe."
+ * )
  */
+ 
 class Affecter
 {
     /**

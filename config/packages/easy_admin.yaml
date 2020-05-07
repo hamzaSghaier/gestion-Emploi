@@ -46,7 +46,7 @@ easy_admin:
         - {entity: Affecter,label: 'Affectations', icon: "pencil"}
 
         - {label: "Paramètres"}
-        - {entity: User,label: 'Utilisateurs', icon: "user"}
+        - {entity: User,label: 'Utilisateurs', icon: "user" ,permission: 'ROLE_ADMIN'}
 
 
 
@@ -67,6 +67,19 @@ easy_admin:
           class: App\Entity\Matiere
         User:
           class: App\Entity\User
+          form:
+            fields:
+              - email
+              # if administrators are allowed to edit users' passwords and roles, add this:
+              - { property: 'Password', type: 'password', type_options: { required: true } }
+              - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }
+          edit:
+            fields:
+              - email
+            
+          list:
+            item_permission: 'ROLE_ADMIN'
+         
 
         Promotion:
             class: App\Entity\Promotion
