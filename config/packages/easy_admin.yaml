@@ -93,5 +93,6 @@ easy_admin:
                     - numTel
                     - lieu_travail
                     - Cin
+                    
         Disponibile:
             class: App\Entity\Disponibile

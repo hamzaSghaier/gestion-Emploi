@@ -5,6 +5,8 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EnseignantRepository")
@@ -34,7 +36,10 @@ class Enseignant
     private $Grade;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer")
+     *      * @Assert\Length(
+     *      min = 8 
+     * )
      */
     private $numTel;
 
@@ -44,7 +49,14 @@ class Enseignant
     private $lieu_travail;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer", length=8)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 8,
+     *      max = 8,
+     *      minMessage = "Your CIN must be 8 number",
+     *      maxMessage = "Your CIN must be 8 number",
+     * )
      */
     private $Cin;
 
