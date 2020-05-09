@@ -1,22 +1,24 @@
 easy_admin:
     design:
         menu:
-        - { label: 'acceuil', url: 'home', rel: 'index' , icon : "home"}
+        - { label: 'acceuil', url: 'home', rel: 'index' , icon : "home",  default: true, }
        
+
         - {label: "Global"}
+        - label: "Les Enseignants"
+       
+          icon : "chalkboard-teacher"
+          children:
+            - {entity: Enseignant,  label: "List enseignats", icon: "th-list"}
+            - {entity: Enseignant, label: "Ajouter un enseignant", icon: "plus",params: {action: 'new'}}
+            - {entity: Disponibile, label: "jours et seances", icon: "pencil"}
+
         - label: "Les Matieres"
           icon : "book-reader"
 
           children:
             - {entity: Matiere, label: "liste des matières", icon: "th-list"}
             - {entity: Matiere, label: "Ajouter Matière", icon: "plus", params: {action: 'new'}}
-
-        - label: "Les Enseignants"
-          icon : "chalkboard-teacher"
-          children:
-            - {entity: Enseignant, label: "List enseignats", icon: "th-list"}
-            - {entity: Enseignant, label: "Ajouter un enseignant", icon: "plus",params: {action: 'new'}}
-            - {entity: Disponibile, label: "jours et seances", icon: "pencil"}
 
 
         - {label: "Gestion des classes"}
