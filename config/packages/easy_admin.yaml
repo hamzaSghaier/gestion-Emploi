@@ -1,6 +1,8 @@
 easy_admin:
     design:
         menu:
+        - { label: 'acceuil', url: 'home', rel: 'index' , icon : "home"}
+       
         - {label: "Global"}
         - label: "Les Matieres"
           icon : "book-reader"
@@ -14,7 +16,7 @@ easy_admin:
           children:
             - {entity: Enseignant, label: "List enseignats", icon: "th-list"}
             - {entity: Enseignant, label: "Ajouter un enseignant", icon: "plus",params: {action: 'new'}}
-            - {entity: Disponibile, label: "Disponibilité", icon: "pencil"}
+            - {entity: Disponibile, label: "jours et seances", icon: "pencil"}
 
 
         - {label: "Gestion des classes"}
@@ -106,6 +108,33 @@ easy_admin:
                     - numTel
                     - lieu_travail
                     - Cin
+                    - {type: 'group', icon: 'th-list', label: 'Disponibles', css_class: ''}
+                    - { property: 'disponibles', type_options: { 'by_reference': false } }
+            list :
+                actions: ['show', 'edit', 'delete']
+                fields:
+                    - nom_enseignant
+                    - prenom_enseignant
+                    - Grade
+                    - numTel
+                    - lieu_travail
+                    - Cin
+                    - disponibles
                     
         Disponibile:
             class: App\Entity\Disponibile
+            list:
+              collapse_actions: true
+              title: "jours et seances"
+              actions: 
+                - {name: 'new' , label: 'ajouter un seance'}    
+              fields:
+                  - jour
+                  - Seance
+            form:
+              fields:
+                  - jour
+                  - Seance
+             
+
+  

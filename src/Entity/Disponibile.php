@@ -2,10 +2,18 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DisponibileRepository")
+ * @UniqueEntity(
+ *     fields={"seance", "jour"},
+ *     errorPath="jour",
+ *     message="This seance is already in use on that jour."
+ * )
  */
 class Disponibile
 {
@@ -26,11 +34,18 @@ class Disponibile
      */
     private $jour;
 
+
+
+
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Enseignant", inversedBy="disponibiles")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToMany(targetEntity="App\Entity\Enseignant", mappedBy="disponibles" ,cascade={"persist"})
      */
-    private $enseignant;
+    private $enseignants;
+
+    public function __construct()
+    {
+        $this->enseignants = new ArrayCollection();
+    }
 
 
 
@@ -63,18 +78,38 @@ class Disponibile
         return $this;
     }
 
-    public function getEnseignant(): ?Enseignant
+
+    public function __toString()
     {
-        return $this->enseignant;
+        return $this->jour ." ". $this->seance  ;
     }
 
-    public function setEnseignant(?Enseignant $enseignant): self
+    /**
+     * @return Collection|Enseignant[]
+     */
+    public function getEnseignants(): Collection
     {
-        $this->enseignant = $enseignant;
+        return $this->enseignants;
+    }
+
+    public function addEnseignant(Enseignant $enseignant): self
+    {
+        if (!$this->enseignants->contains($enseignant)) {
+            $this->enseignants[] = $enseignant;
+            $enseignant->addDisponible($this);
+        }
 
         return $this;
     }
 
+    public function removeEnseignant(Enseignant $enseignant): self
+    {
+        if ($this->enseignants->contains($enseignant)) {
+            $this->enseignants->removeElement($enseignant);
+            $enseignant->removeDisponible($this);
+        }
 
+        return $this;
+    }
 
 }

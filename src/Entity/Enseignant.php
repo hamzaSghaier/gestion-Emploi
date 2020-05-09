@@ -62,16 +62,18 @@ class Enseignant
      */
     private $Cin;
 
-
-
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Disponibile", mappedBy="enseignant", orphanRemoval=true)
+     * @ORM\ManyToMany(targetEntity="App\Entity\Disponibile", inversedBy="enseignants")
      */
-    private $disponibiles;
+    private $disponibles;
+
+
+
 
     public function __construct()
     {
         $this->disponibiles = new ArrayCollection();
+        $this->disponibles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -188,6 +190,32 @@ class Enseignant
             if ($disponibile->getEnseignant() === $this) {
                 $disponibile->setEnseignant(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Disponibile[]
+     */
+    public function getDisponibles(): Collection
+    {
+        return $this->disponibles;
+    }
+
+    public function addDisponible(Disponibile $disponible): self
+    {
+        if (!$this->disponibles->contains($disponible)) {
+            $this->disponibles[] = $disponible;
+        }
+
+        return $this;
+    }
+
+    public function removeDisponible(Disponibile $disponible): self
+    {
+        if ($this->disponibles->contains($disponible)) {
+            $this->disponibles->removeElement($disponible);
         }
 
         return $this;
