@@ -7,3 +7,5 @@ to setup this project :
   - update database in .env file 
   - $bin/console doctrine:schema:update --force
   - $bin/console server:start
+
+
