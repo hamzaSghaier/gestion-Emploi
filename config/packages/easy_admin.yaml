@@ -1,24 +1,22 @@
 easy_admin:
     design:
         menu:
-        - { label: 'acceuil', url: 'home', rel: 'index' , icon : "home",  default: true, }
+        - { label: 'acceuil', url: 'home', rel: 'index' , icon : "home", default: true}
        
-
         - {label: "Global"}
-        - label: "Les Enseignants"
-       
-          icon : "chalkboard-teacher"
-          children:
-            - {entity: Enseignant,  label: "List enseignats", icon: "th-list"}
-            - {entity: Enseignant, label: "Ajouter un enseignant", icon: "plus",params: {action: 'new'}}
-            - {entity: Disponibile, label: "jours et seances", icon: "pencil"}
-
         - label: "Les Matieres"
           icon : "book-reader"
 
           children:
             - {entity: Matiere, label: "liste des matières", icon: "th-list"}
             - {entity: Matiere, label: "Ajouter Matière", icon: "plus", params: {action: 'new'}}
+
+        - label: "Les Enseignants"
+          icon : "chalkboard-teacher"
+          children:
+            - {entity: Enseignant, label: "List enseignats", icon: "th-list"}
+            - {entity: Enseignant, label: "Ajouter un enseignant", icon: "plus",params: {action: 'new'}}
+            - {entity: Disponibile, label: "jours et seances", icon: "pencil"}
 
 
         - {label: "Gestion des classes"}
@@ -69,6 +67,17 @@ easy_admin:
 
         Matiere:
           class: App\Entity\Matiere
+          list:
+            fields:
+              - Nom_matiere
+              - NhTHC
+              - NhTD
+              - NhTP
+              - coefMatiere 
+              - Niveau
+              - semestre
+              - NhTotal
+            
         User:
           class: App\Entity\User
           form:
@@ -80,22 +89,48 @@ easy_admin:
           edit:
             fields:
               - email
+
             
           list:
             item_permission: 'ROLE_ADMIN'
+            fields:
+              - email
+
          
 
         Promotion:
             class: App\Entity\Promotion
+            list:
+              fields:
+                - designation
+                - dateArrive
+
 
         Specialite:
             class: App\Entity\Specialite
+            list:
+              fields:
+                - designation
+
 
         Groupe:
             class: App\Entity\Groupe
+            list:
+              fields:
+                - niveau
+                - nbeleve
+                - specialite
+                - nom
+                - promotion
 
         Affecter:
             class: App\Entity\Affecter
+            list:
+              fields:
+                - matiere
+                - groupe
+                - enseignant
+
 
         Enseignant:
             class: App\Entity\Enseignant
