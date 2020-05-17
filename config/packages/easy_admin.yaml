@@ -43,6 +43,20 @@ easy_admin:
             - {entity: Groupe, label: "liste des groupe", icon: "th-list"}
             - {entity: Groupe, label: "Ajouter un groupe", icon: "plus", params: {action: 'new'}}
 
+        - label: "Les Emplois"
+          icon : "chalkboard"
+
+          children:
+            - {entity: Emploi, label: "liste des emploi", icon: "th-list"}
+            - {entity: Emploi, label: "Ajouter un Emploi", icon: "plus", params: {action: 'new'}}
+
+        - label: "Les Details Emplois"
+          icon : "chalkboard"
+
+          children:
+            - {entity: DetailsEmploi, label: "liste des DetailsEmploi", icon: "th-list"}
+            - {entity: DetailsEmploi, label: "Ajouter un DetailsEmploi", icon: "plus", params: {action: 'new'}}
+
 
         - {label: "Affectations des matières"}
         - {entity: Affecter,label: 'Affectations', icon: "pencil"}
@@ -172,6 +186,17 @@ easy_admin:
               fields:
                   - jour
                   - Seance
+        Emploi:
+            class: App\Entity\Emploi
+            list:
+              collapse_actions: true
+              title: "Emploi"
+        DetailsEmploi:
+            class: App\Entity\DetailsEmploi
+            list:
+              collapse_actions: true
+              title: "DetailEmploi"
+
              
 
   
