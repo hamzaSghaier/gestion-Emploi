@@ -16,7 +16,9 @@ easy_admin:
           children:
             - {entity: Enseignant, label: "List enseignats", icon: "th-list"}
             - {entity: Enseignant, label: "Ajouter un enseignant", icon: "plus",params: {action: 'new'}}
-            - {entity: Disponibile, label: "jours et seances", icon: "pencil"}
+            - {entity: EnseignantDispo, label: "Disponibiltés", icon: "pencil"}
+            - {entity: Disponibile, label: "jours et seances", icon: "th-list"}
+
 
 
         - {label: "Gestion des classes"}
@@ -161,6 +163,7 @@ easy_admin:
                     - Cin
                     - {type: 'group', icon: 'th-list', label: 'Disponibles', css_class: ''}
                     - { property: 'disponibles', type_options: { 'by_reference': false } }
+
             list :
                 actions: ['show', 'edit', 'delete']
                 fields:
@@ -171,17 +174,37 @@ easy_admin:
                     - lieu_travail
                     - Cin
                     - disponibles
+
+
+        EnseignantDispo:
+            class: App\Entity\Enseignant
+            label: "Enseignant"
+            edit:
+                fields:
+                    - { property: 'disponibles', type_options: { 'by_reference': false } }
+            list :
+                actions:
+                  - {name: 'new' , label: ''}
+                  - {name: 'edit' , label: 'modifier disponibiltés'}
+                  - {name: 'delete' , label: ''}
+                fields:
+                    - nom_enseignant
+                    - prenom_enseignant
+                    - Cin
+                    - disponibles
+
                     
         Disponibile:
             class: App\Entity\Disponibile
             list:
-              collapse_actions: true
+              collapse_actions: false
               title: "jours et seances"
               actions: 
                 - {name: 'new' , label: 'ajouter un seance'}    
               fields:
                   - jour
                   - Seance
+            
             form:
               fields:
                   - jour
