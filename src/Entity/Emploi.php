@@ -38,9 +38,11 @@ class Emploi
      */
     private $detailsEmplois;
 
+ 
     public function __construct()
     {
         $this->detailsEmplois = new ArrayCollection();
+        $this->affecter = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -119,4 +121,10 @@ class Emploi
     {
         return "Emploi de ". $this->dateDebut->format('Y-m-d');
     }
+
+
+
+
+
+
 }

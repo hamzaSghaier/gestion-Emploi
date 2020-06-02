@@ -1,8 +1,13 @@
 easy_admin:
     design:
+
+
+
+        form_theme: 'Form/fields.html.twig'
         menu:
         - { label: 'acceuil', url: 'home', rel: 'index' , icon : "home", default: true}
-       
+        # - { label: 'emploi', url: 'emploi', rel: 'emploi' , icon : "home"}
+        # - { label: 'list des emploi', url: 'emplois', rel: 'emplois' , icon : "home"}
         - {label: "Global"}
         - label: "Les Matieres"
           icon : "book-reader"
@@ -49,15 +54,8 @@ easy_admin:
           icon : "chalkboard"
 
           children:
-            - {entity: Emploi, label: "liste des emploi", icon: "th-list"}
+            - { label: 'list des emploi', url: 'emplois', rel: 'emplois' , icon : "th-list"}
             - {entity: Emploi, label: "Ajouter un Emploi", icon: "plus", params: {action: 'new'}}
-
-        - label: "Les Details Emplois"
-          icon : "chalkboard"
-
-          children:
-            - {entity: DetailsEmploi, label: "liste des DetailsEmploi", icon: "th-list"}
-            - {entity: DetailsEmploi, label: "Ajouter un DetailsEmploi", icon: "plus", params: {action: 'new'}}
 
 
         - {label: "Affectations des matières"}
@@ -213,13 +211,25 @@ easy_admin:
             class: App\Entity\Emploi
             list:
               collapse_actions: true
-              title: "Emploi"
+              fields:
+                  - dateDebut
+                  - DateFin
+                  - classe
+            new:
+              fields:
+                  - dateDebut
+                  - DateFin
+                  - classe
         DetailsEmploi:
             class: App\Entity\DetailsEmploi
-            list:
-              collapse_actions: true
-              title: "DetailEmploi"
+            edit:
+              fields:
+                  - Matiere
+                  
 
+
+
+           
              
 
   

@@ -42,10 +42,9 @@ class Disponibile
      */
     private $enseignants;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\DetailsEmploi", inversedBy="seance")
-     */
-    private $detailsEmploi;
+    
+
+   
 
     public function __construct()
     {
@@ -117,16 +116,6 @@ class Disponibile
         return $this;
     }
 
-    public function getDetailsEmploi(): ?DetailsEmploi
-    {
-        return $this->detailsEmploi;
-    }
 
-    public function setDetailsEmploi(?DetailsEmploi $detailsEmploi): self
-    {
-        $this->detailsEmploi = $detailsEmploi;
-
-        return $this;
-    }
 
 }

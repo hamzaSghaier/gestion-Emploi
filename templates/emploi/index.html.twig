@@ -1,0 +1,189 @@
+{# templates/bundles/EasyAdminBundle/default/layout.html.twig #}
+{% extends '@!EasyAdmin/default/layout.html.twig' %}
+
+
+{# DON'T DO THIS: it will cause an infinite loop #}
+{% block content_title %}
+    {# ... customize the content title ... #}
+<table class="table  text-right" border="0">
+    <tr>
+        <div class="row" >
+            <td><p style="margin-left: 70px; margin-bottom: 0px">جــــدول الأوقــــــــات</p></td>
+            <td>وزارة الــدفــــــاع الـوطـــنــي</td>
+        </div>
+    </tr>
+    <tr>
+        <div class="row" >
+            <td></td>
+      <td>جـــــيـــــــــش الـــــطـــــيـــــران</td>
+        </div>
+    </tr>
+    <tr>
+        <div class="row" >
+            <td>{{ emploi.datefin |date('Y/m/d') }}&nbsp; &nbsp; &nbsp;{{ emploi.dateDebut |date('Y/m/d') }}</td>
+            <td>الـــمـــــســتـــوى: الشهادة الوطنية للإجازة التطبيقيـَة</td>
+        </div>
+    </tr>
+    <tr>
+        <div class="row" >
+            <td></td>
+            <td>" {{ emploi.classe}}:  الإخـــتـــصـــاص  "  </td>
+        </div>
+    </tr>
+    <tr>
+        <div class="row" >
+            <td></td>
+            <td>عـديد التـلامــذة: &nbsp;&nbsp;&nbsp; {{ emploi.classe.nbeleve }}</td>
+
+        </div>
+    </tr>
+</table>
+   
+<br><br><br>
+<div ><table class="table table-bordered text-center">
+        <tr> <th></th>
+        <th>08:05 -> 09:35</th>
+        <th>09:50 -> 11:20</th>
+        <th>11:25 -> 12:55</th>
+        <th>13:45 -> 15:15</th>
+        <th>15:25 -> 16:55</th>
+        
+      
+         
+            
+           
+        </tr>
+<tr>
+   <th>lundi</th>    
+        {% for detail in emploi.detailsEmplois %}
+
+
+ {% if detail.seance.jour == "lundi" %}
+    {% if detail.matiere == NULL %}
+         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><input type="button" class="btn btn-primary " value="+"  /></a></td> 
+    {% else %}
+        <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><input type="button" class="btn btn-primary " value="{{ detail.matiere }} "  />  </a></td> 
+    
+    {% endif %}
+{% endif %}
+
+
+
+{% endfor %} 
+
+ </tr>
+
+<tr>
+     <th>mardi</th>  
+        {% for detail in emploi.detailsEmplois %}
+
+
+
+ {% if detail.seance.jour == "mardi" %}
+    {% if detail.matiere == NULL %}
+         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><input type="button" class="btn btn-primary " value="+"  /></a></td> 
+    {% else %}
+        <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><input type="button" class="btn btn-primary " value="{{ detail.matiere }} "  /> <br><input type="button" class="btn btn-primary " value="{{ detail.enseignant }} "  /></a></td> 
+    
+    {% endif %}
+{% endif %}
+
+
+
+{% endfor %} 
+
+ </tr>
+ <tr>
+     <th>mercredi</th>  
+{% for detail in emploi.detailsEmplois %}
+
+
+
+ {% if detail.seance.jour == "mercredi" %}
+
+    {% if detail.matiere == NULL %}
+         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><input type="button" class="btn btn-primary " value="+"  /></a></td> 
+    {% else %}
+        <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><input type="button" class="btn btn-primary " value="{{ detail.matiere }} "  /> <br><input type="button" class="btn btn-primary " value="{{ detail.enseignant }} "  /></a></td> 
+    
+    {% endif %}
+
+{% endif %}
+
+
+
+{% endfor %} 
+
+ </tr>
+ <tr>
+     <th>jeudi</th>  
+        {% for detail in emploi.detailsEmplois %}
+
+
+
+ {% if detail.seance.jour == "jeudi" %}
+    {% if detail.matiere == NULL %}
+         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><input type="button" class="btn btn-primary " value="+"  /></a></td> 
+    {% else %}
+        <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><input type="button" class="btn btn-primary " value="{{ detail.matiere }} "  /> <br><input type="button" class="btn btn-primary " value="{{ detail.enseignant }} "  /></a></td> 
+    
+    {% endif %}
+{% endif %}
+
+
+
+{% endfor %} 
+
+ </tr>
+ <tr>
+     <th>vendredi</th>  
+        {% for detail in emploi.detailsEmplois %}
+
+
+
+ {% if detail.seance.jour == "vendredi" %}
+    {% if detail.matiere == NULL %}
+         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><input type="button" class="btn btn-primary " value="+"  /></a></td> 
+    {% else %}
+        <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><input type="button" class="btn btn-primary " value="{{ detail.matiere }} "  /> <br><input type="button" class="btn btn-primary " value="{{ detail.enseignant }} "  /></a></td> 
+    
+    {% endif %}
+{% endif %}
+
+
+
+{% endfor %} 
+
+ </tr>
+ <tr>
+     <th>samedi</th>  
+        {% for detail in emploi.detailsEmplois %}
+
+
+
+ {% if detail.seance.jour == "samedi" %}
+    {% if detail.matiere == NULL %}
+         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><input type="button" class="btn btn-primary " value="+"  /></a></td> 
+    {% else %}
+        <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><input type="button" class="btn btn-primary " value="{{ detail.matiere }} "  /> <br><input type="button" class="btn btn-primary " value="{{ detail.enseignant }} "  /></a></td> 
+    
+    {% endif %}
+{% endif %}
+
+
+
+{% endfor %} 
+
+ </tr>
+
+
+     
+    </table>
+     
+       
+</div>
+
+{% endblock %}
+
+{# DO THIS: the '!' symbol tells Symfony to extend from the original template #}
+

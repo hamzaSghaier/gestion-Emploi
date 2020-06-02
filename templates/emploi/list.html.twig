@@ -1,0 +1,59 @@
+{% extends '@!EasyAdmin/default/layout.html.twig' %}
+{% block content_title %}
+    <form name="f" method="get" action="" >
+        <div class="jumbotron text-center" >
+            <h1> La liste des emplois </h1>
+        </div>
+        <br>
+        <div class="row" >
+            <div class="col-md-3"> <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="srch" style="margin-left: 370px;"></div>
+            <div class="col-md-2"><button class="btn btn-outline-primary my-2 my-sm-0" type="submit" style="margin-left: 350px;">Search</button></div>
+        </div>
+        <br>
+        <div > <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                  
+                    <th>classe</th>
+                  
+                    <th>date debut de semaine</th>
+                    <th>date debut de semaine</th>
+                    <th>modifier</th>
+                    <th>supprimer</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i,emp in emplois %}
+                    <tr>
+                        
+                        <td>{{ emp.classe }}</td>
+                        
+                        <td>{{ emp.datedebut |date('d/m/Y')}}</td>
+                        <td>{{ emp.datefin |date('d/m/Y')}}</td>
+                        <td><a  href="{{ path('Modiferemploi',{'id': emp.id}) }}"><input type="button" class="btn btn-primary " value="Modifier"  /></a></td>
+                        <td><a  href="#" data-toggle="modal" data-target="#supp"><input type="button" class="btn btn-primary " value="Supprimer"  /></a></td>
+                    </tr>
+                    <div class="modal fade" id="supp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Voulez-vous vraiment supprimer cet emploi?</h5>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">Séléctionnez "Supprimer" si vous voulez vraiment supprimer cet emploi</div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                                    <a class="btn btn-primary" href="#">Supprimer</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </form>
+{% endblock %}

@@ -22,16 +22,30 @@ class DetailsEmploi
      * @ORM\Column(type="integer", nullable=true)
      */
     private $nbHeureR;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Disponibile", mappedBy="detailsEmploi")
-     */
-    private $seance;
-
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Emploi", inversedBy="detailsEmplois")
      */
     private $emlpoi;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Matiere")
+     */
+    private $Matiere;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Disponibile")
+     */
+    private $seance;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Enseignant")
+     */
+    private $enseignant;
+    
+
+   
+ 
 
    
 
@@ -57,36 +71,9 @@ class DetailsEmploi
         return $this;
     }
 
-    /**
-     * @return Collection|Disponibile[]
-     */
-    public function getSeance(): Collection
-    {
-        return $this->seance;
-    }
+   
 
-    public function addSeance(Disponibile $seance): self
-    {
-        if (!$this->seance->contains($seance)) {
-            $this->seance[] = $seance;
-            $seance->setDetailsEmploi($this);
-        }
 
-        return $this;
-    }
-
-    public function removeSeance(Disponibile $seance): self
-    {
-        if ($this->seance->contains($seance)) {
-            $this->seance->removeElement($seance);
-            // set the owning side to null (unless already changed)
-            if ($seance->getDetailsEmploi() === $this) {
-                $seance->setDetailsEmploi(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getEmlpoi(): ?Emploi
     {
@@ -100,6 +87,53 @@ class DetailsEmploi
         return $this;
     }
 
+    public function __toString()
+    {
+        return "NbHeuer ". $this->nbHeureR;
+    }
 
+
+
+
+    public function getMatiere(): ?Matiere
+    {
+        return $this->Matiere;
+    }
+
+    public function setMatiere(?Matiere $Matiere): self
+    {
+        $this->Matiere = $Matiere;
+
+        return $this;
+    }
+
+    public function getSeance(): ?Disponibile
+    {
+        return $this->seance;
+    }
+
+    public function setSeance(?Disponibile $seance): self
+    {
+        $this->seance = $seance;
+
+        return $this;
+    }
+
+    public function getEnseignant(): ?Enseignant
+    {
+        return $this->enseignant;
+    }
+
+    public function setEnseignant(?Enseignant $enseignant): self
+    {
+        $this->enseignant = $enseignant;
+
+        return $this;
+    }
+
+
+   
+
+  
 
 }
