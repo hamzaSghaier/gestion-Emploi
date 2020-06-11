@@ -225,6 +225,7 @@ easy_admin:
             edit:
               fields:
                   - Matiere
+                  - autre
                   
 
 

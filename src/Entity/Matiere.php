@@ -54,7 +54,7 @@ class Matiere
     private $semestre;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $NhTotal;
 
@@ -153,12 +153,12 @@ class Matiere
         return $this;
     }
 
-    public function getNhTotal(): ?int
+    public function getNhTotal(): ?float
     {
         return $this->NhTotal;
     }
 
-    public function setNhTotal(int $NhTotal): self
+    public function setNhTotal(float $NhTotal): self
     {
         $this->NhTotal = $NhTotal;
 

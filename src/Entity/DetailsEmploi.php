@@ -19,7 +19,7 @@ class DetailsEmploi
     private $id;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $nbHeureR;
     /**
@@ -29,7 +29,8 @@ class DetailsEmploi
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Matiere")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Matiere",cascade={"remove"})
+    * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $Matiere;
 
@@ -42,6 +43,11 @@ class DetailsEmploi
      * @ORM\ManyToOne(targetEntity="App\Entity\Enseignant")
      */
     private $enseignant;
+
+    /**
+     * @ORM\Column(type="string", length=255,nullable=true)
+     */
+    private $autre;
     
 
    
@@ -59,12 +65,12 @@ class DetailsEmploi
         return $this->id;
     }
 
-    public function getNbHeureR(): ?int
+    public function getNbHeureR(): ?float
     {
         return $this->nbHeureR;
     }
 
-    public function setNbHeureR(?int $nbHeureR): self
+    public function setNbHeureR(?float $nbHeureR): self
     {
         $this->nbHeureR = $nbHeureR;
 
@@ -127,6 +133,18 @@ class DetailsEmploi
     public function setEnseignant(?Enseignant $enseignant): self
     {
         $this->enseignant = $enseignant;
+
+        return $this;
+    }
+
+    public function getAutre(): ?string
+    {
+        return $this->autre;
+    }
+
+    public function setAutre(string $autre): self
+    {
+        $this->autre = $autre;
 
         return $this;
     }

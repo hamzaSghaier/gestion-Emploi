@@ -26,7 +26,8 @@ class Affecter
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Matiere")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Matiere",cascade={"remove"})
+     * @ORM\JoinColumn(onDelete="CASCADE")
      * @ORM\JoinColumn(nullable=false)
      */
     private $matiere;
