@@ -48,8 +48,12 @@ class DetailsEmploi
      * @ORM\Column(type="string", length=255,nullable=true)
      */
     private $autre;
-    
 
+
+
+
+
+    
    
  
 
@@ -58,6 +62,7 @@ class DetailsEmploi
     public function __construct()
     {
         $this->seance = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -148,6 +153,10 @@ class DetailsEmploi
 
         return $this;
     }
+
+
+
+  
 
 
    

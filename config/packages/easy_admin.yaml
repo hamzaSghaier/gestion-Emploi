@@ -218,7 +218,7 @@ easy_admin:
             new:
               fields:
                   - dateDebut
-                  - DateFin
+                  # - DateFin
                   - classe
         DetailsEmploi:
             class: App\Entity\DetailsEmploi
@@ -226,7 +226,9 @@ easy_admin:
               fields:
                   - Matiere
                   - autre
-                  
+                  # - matieres
+                  # - { property: 'matieres', type: 'choice' }
+
 
 
 

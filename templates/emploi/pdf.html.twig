@@ -1,48 +1,53 @@
-{# templates/bundles/EasyAdminBundle/default/layout.html.twig #}
-{% extends '@!EasyAdmin/default/layout.html.twig' %}
 
+ <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
 
-{# DON'T DO THIS: it will cause an infinite loop #}
-{% block content_title %}
-    {# ... customize the content title ... #}
-
- 
+        </head>
+        <body>
 <table class="table  text-right" border="0">
     <tr>
-        <div class="row" >
-            <td><p style="margin-left: 70px; margin-bottom: 0px">Emploi des Temps</p></td>
-            <td>وزارة الــدفــــــاع الـوطـــنــي</td>
-        </div>
+       
+            <td>   Emploi des Temps   </td>
+            <td>      Ministère de la Défense nationale   </td>
+       
     </tr>
     <tr>
-        <div class="row" >
+     
             <td></td>
-      <td>جـــــيـــــــــش الـــــطـــــيـــــران</td>
-        </div>
+      <td>  L'Armée de l'Air tunisienne  </td>
+   
     </tr>
     <tr>
-        <div class="row" >
-            <td>{{ emploi.datefin |date('Y/m/d') }}&nbsp; &nbsp; &nbsp;{{ emploi.dateDebut |date('Y/m/d') }}</td>
-            <td>الـــمـــــســتـــوى: الشهادة الوطنية للإجازة التطبيقيـَة</td>
-        </div>
-    </tr>
+     <td></td>
+            <td>{{ emploi.datefin |date('Y/m/d') }}&nbsp; &nbsp; &nbsp;{{ emploi.dateDebut |date('Y/m/d') }}</td> </tr>
+        <tr>   <td></td>  <td> niveau : licence Appliquée    </td> </tr>
+     
+   
     <tr>
-        <div class="row" >
+       
             <td></td>
-            <td>" {{ emploi.classe}}:  الإخـــتـــصـــاص  "  </td>
-        </div>
+            <td>    Branche  :     {{ emploi.classe}} </td>
+       
     </tr>
-    <tr>
-        <div class="row" >
-            <td></td>
-            <td>عـديد التـلامــذة: &nbsp;&nbsp;&nbsp; {{ emploi.classe.nbeleve }}</td>
+    <tr>       <td></td>
+            <td> Nombre des élèves : {{ emploi.classe.nbeleve }}</td>
 
-        </div>
+ 
     </tr>
+
+
+
+
+        <tr>
+    
+            <td> De &nbsp; {{ emploi.dateDebut | date('d/m/Y') }}&nbsp; &nbsp;  Au  &nbsp; &nbsp; {{ emploi.datefin |date('d/m/Y') }}</td> </tr>
+    <tr>
 </table>
    
 <br><br><br>
-<div ><table class="table table-bordered text-center">
+<div ><table class="table table-bordered text-center" border="1">
         <tr> <th></th>
         <th>08:05 -> 09:35</th>
         <th>09:50 -> 11:20</th>
@@ -62,7 +67,7 @@
 
  {% if detail.seance.jour == "lundi" %}
     {% if detail.matiere == NULL and  detail.autre == NULL  %}
-         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><input type="button" class="btn btn-primary " value="+"  /></a></td> 
+         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"></a></td> 
     {% elseif detail.matiere != NULL  %}
 
          <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><label  > {{ detail.matiere }}</label> <br><label  > {{ detail.NbHeureR }}/{{ detail.matiere.NhTotal }}  <label/><label  > {{ detail.enseignant }}   <label/></a></td> 
@@ -86,7 +91,7 @@
 
  {% if detail.seance.jour == "mardi" %}
     {% if detail.matiere == NULL and  detail.autre == NULL  %}
-         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><input type="button" class="btn btn-primary " value="+"  /></a></td> 
+         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"></a></td> 
     {% elseif detail.matiere != NULL  %}
 
          <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><label  > {{ detail.matiere }}</label> <br><label  > {{ detail.NbHeureR }}/{{ detail.matiere.NhTotal }}  <label/><label  > {{ detail.enseignant }}   <label/></a></td> 
@@ -110,7 +115,7 @@
  {% if detail.seance.jour == "mercredi" %}
 
     {% if detail.matiere == NULL and  detail.autre == NULL  %}
-         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><input type="button" class="btn btn-primary " value="+"  /></a></td> 
+         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"></a></td> 
     {% elseif detail.matiere != NULL  %}
 
          <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><label  > {{ detail.matiere }}</label> <br><label  > {{ detail.NbHeureR }}/{{ detail.matiere.NhTotal }}  <label/><label  > {{ detail.enseignant }}   <label/></a></td> 
@@ -134,7 +139,7 @@
 
  {% if detail.seance.jour == "jeudi" %}
     {% if detail.matiere == NULL and  detail.autre == NULL  %}
-         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><input type="button" class="btn btn-primary " value="+"  /></a></td> 
+         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"></a></td> 
     {% elseif detail.matiere != NULL  %}
 
          <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><label  > {{ detail.matiere }}</label> <br><label  > {{ detail.NbHeureR }}/{{ detail.matiere.NhTotal }}  <label/><label  > {{ detail.enseignant }}   <label/></a></td> 
@@ -157,7 +162,7 @@
 
  {% if detail.seance.jour == "vendredi" %}
      {% if detail.matiere == NULL and  detail.autre == NULL  %}
-         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><input type="button" class="btn btn-primary " value="+"  /></a></td> 
+         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"></a></td> 
     {% elseif detail.matiere != NULL  %}
 
          <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><label  > {{ detail.matiere }}</label> <br><label  > {{ detail.NbHeureR }}/{{ detail.matiere.NhTotal }}  <label/><label  > {{ detail.enseignant }}   <label/></a></td> 
@@ -180,7 +185,7 @@
 
  {% if detail.seance.jour == "samedi" %}
     {% if detail.matiere == NULL and  detail.autre == NULL  %}
-         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><input type="button" class="btn btn-primary " value="+"  /></a></td> 
+         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"></a></td> 
     {% elseif detail.matiere != NULL  %}
 
          <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><label  > {{ detail.matiere }}</label> <br><label  > {{ detail.NbHeureR }}/{{ detail.matiere.NhTotal }}  <label/><label  > {{ detail.enseignant }}   <label/></a></td> 
@@ -202,8 +207,7 @@
      
        
 </div>
+</body>
+</html>
 
-{% endblock %}
-
-{# DO THIS: the '!' symbol tells Symfony to extend from the original template #}
 

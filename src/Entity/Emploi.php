@@ -24,7 +24,7 @@ class Emploi
     private $dateDebut;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $DateFin;
 

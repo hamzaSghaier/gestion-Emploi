@@ -10,10 +10,15 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\Matiere;
 use App\Entity\DetailsEmploi;
 
+
 use App\Entity\Disponibile;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\DisponibileRepository;
 use App\Repository\AffecterRepository;
+use App\Repository\EmploiRepository;
+use App\Repository\MatiereRepository;
+
+
 use App\Repository\DetailsEmploiRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -30,15 +35,18 @@ class WhateverSubscriber implements EventSubscriberInterface
    private $route;
    private   $empMa;
    private   $empPROF;
+   private   $listeMatiereSelect;
   
 
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder,EntityManagerInterface $entityManager ,DisponibileRepository $Repository ,DetailsEmploiRepository $RepositoryMa,AffecterRepository $Repositoryprof, RouterInterface $router )     {
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder,EntityManagerInterface $entityManager ,DisponibileRepository $Repository ,DetailsEmploiRepository $RepositoryMa,AffecterRepository $Repositoryprof, RouterInterface $router,  MatiereRepository $RepositoryMatiere)     {
          $this->passwordEncoder = $passwordEncoder;
          $this->emp = $Repository;
          $this->entitym = $entityManager;
          $this->route = $router;
          $this->empMa = $RepositoryMa;
          $this->empPROF = $Repositoryprof;
+         $this->listeMatiereSelect = $RepositoryMatiere;
+
         }
 
 
@@ -48,6 +56,7 @@ class WhateverSubscriber implements EventSubscriberInterface
             EasyAdminEvents::PRE_PERSIST => ['preUpdate'],
             EasyAdminEvents::PRE_UPDATE => ['preUpdate'],
             EasyAdminEvents::POST_UPDATE => ['POSTUpdate'],
+            EasyAdminEvents::PRE_EDIT => ['PREEdit'],
             EasyAdminEvents::POST_PERSIST => ['postpersist'],
            
 
@@ -57,16 +66,23 @@ class WhateverSubscriber implements EventSubscriberInterface
     }
 
 
-    // public function preDelete(GenericEvent $event)
-    // {
-    //     $entity = $event->getSubject();
+    public function PREEdit(GenericEvent $event)
+    {
+        $entity = $event->getSubject();
+if($entity['name']=="DetailsEmploi")
+{
+    
+    
+    
+    // dump($entity); die();
 
-    //     if (($entity instanceof App\Entity\Matiere )) {
-    //         var_dump($entity); die();
-    //     }
+}
 
-    //    var_dump("hhhh"); die();
-    // }
+
+
+    
+       
+    }
 
     public function preUpdate(GenericEvent $event)
     {
@@ -141,14 +157,48 @@ $emploiController-> index();
     { 
         if (method_exists($event->getSubject(), 'setDateDebut')) {
 
+
+      
+           $dB= $event->getSubject()->getDateDebut();
+           $result = $dB->format('Y-m-d');
+
+            $d1=date('Y-m-d', strtotime($result. ' + 7 days'));
+            $date = \DateTime::createFromFormat('Y-m-d', $d1);
+            $event->getSubject()->setDateFin($date);
+
+            
+
+
+
           $id=  $event->getSubject()->getId();
           $DispoSenceJour= $this->emp->findAll();
+        //  $listeMatieres = $this->listeMatiereSelect->findAll();
+
+
+
+
+
+
+
        foreach ($DispoSenceJour as $variable) {
       
-           
+
+
+
+
+
             $DetailsEmploi = new DetailsEmploi() ;
             $DetailsEmploi->setEmlpoi($event->getSubject());
             $DetailsEmploi->setSeance($variable);
+            $araayy= [] ;
+            // foreach ($listeMatieres as $var) {
+      
+
+            //   array_push($araayy, $var->getNomMatiere());
+            //    // $araayy[$var->getNomMatiere()]= $var->getNomMatiere() ; 
+    
+            // }
+            //   $DetailsEmploi->setMatieres($araayy);
             
             $this->entitym->persist($DetailsEmploi);
         // actually executes the queries (i.e. the INSERT query)

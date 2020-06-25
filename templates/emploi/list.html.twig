@@ -31,6 +31,8 @@
                         <td>{{ emp.datedebut |date('d/m/Y')}}</td>
                         <td>{{ emp.datefin |date('d/m/Y')}}</td>
                         <td><a  href="{{ path('Modiferemploi',{'id': emp.id}) }}"><input type="button" class="btn btn-primary " value="Modifier"  /></a></td>
+                       {# <td><a  href="{{ path('Modiferemploi',{'id': emp.id}) }}"><input type="button" class="btn btn-primary " value="Imprimer"  /></a></td> #}
+                       
                         <td><a  href="#" data-toggle="modal" data-target="#supp"><input type="button" class="btn btn-primary " value="Supprimer"  /></a></td>
                     </tr>
                     <div class="modal fade" id="supp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
