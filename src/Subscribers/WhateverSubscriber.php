@@ -92,7 +92,8 @@ if($entity['name']=="DetailsEmploi")
          $event->getSubject()->setPassword($this->passwordEncoder->encodePassword($event->getSubject(),$event->getSubject()->getPassword()));
         }
 
-        if (method_exists($event->getSubject(), 'setMatiere')) {
+        if (method_exists($event->getSubject(), 'setAutre')) {
+           
            if ( $event->getSubject()->getMatiere() != null) {
                # code...
            
