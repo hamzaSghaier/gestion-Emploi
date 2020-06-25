@@ -5,12 +5,10 @@
 {# DON'T DO THIS: it will cause an infinite loop #}
 {% block content_title %}
     {# ... customize the content title ... #}
-
- 
 <table class="table  text-right" border="0">
     <tr>
         <div class="row" >
-            <td><p style="margin-left: 70px; margin-bottom: 0px">Emploi des Temps</p></td>
+            <td><p style="margin-left: 70px; margin-bottom: 0px">جــــدول الأوقــــــــات</p></td>
             <td>وزارة الــدفــــــاع الـوطـــنــي</td>
         </div>
     </tr>
@@ -42,6 +40,7 @@
 </table>
    
 <br><br><br>
+ <a href="{{ path('Pdf',{'id': emploi.id}) }}"><input type="button" class="btn btn-primary " value="Imprimer"  /></a>
 <div ><table class="table table-bordered text-center">
         <tr> <th></th>
         <th>08:05 -> 09:35</th>

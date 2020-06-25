@@ -18,8 +18,9 @@
                   
                     <th>date debut de semaine</th>
                     <th>date debut de semaine</th>
-                    <th>modifier</th>
-                    <th>supprimer</th>
+                                      <th>modifier</th>
+                      <th>Imprimer</th>
+  
                 </tr>
                 </thead>
                 <tbody>
@@ -31,9 +32,8 @@
                         <td>{{ emp.datedebut |date('d/m/Y')}}</td>
                         <td>{{ emp.datefin |date('d/m/Y')}}</td>
                         <td><a  href="{{ path('Modiferemploi',{'id': emp.id}) }}"><input type="button" class="btn btn-primary " value="Modifier"  /></a></td>
-                       {# <td><a  href="{{ path('Modiferemploi',{'id': emp.id}) }}"><input type="button" class="btn btn-primary " value="Imprimer"  /></a></td> #}
+                        <td><a  href="{{ path('Pdf',{'id': emp.id}) }}"><input type="button" class="btn btn-primary " value="Imprimer"  /></a></td>
                        
-                        <td><a  href="#" data-toggle="modal" data-target="#supp"><input type="button" class="btn btn-primary " value="Supprimer"  /></a></td>
                     </tr>
                     <div class="modal fade" id="supp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
