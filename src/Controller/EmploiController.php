@@ -37,26 +37,7 @@ class EmploiController extends AbstractController
             'emploi'=>$unemp
             ,'dtemploi'=>$DetailsEmploi,
          ]);
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
      }
-
-
-
-
-
-
-
-
-
 
     /**
      * @Route("/emploi", name="emploi" , methods={"GET","HEAD"})

@@ -2,49 +2,29 @@
  <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
+         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 
         </head>
-        <body>
-<table class="table  text-right" border="0">
-    <tr>
-       
-            <td>   Emploi des Temps   </td>
-            <td>      Ministère de la Défense nationale   </td>
-       
-    </tr>
-    <tr>
-     
-            <td></td>
-      <td>  L'Armée de l'Air tunisienne  </td>
-   
-    </tr>
-    <tr>
-     <td></td>
-            <td>{{ emploi.datefin |date('Y/m/d') }}&nbsp; &nbsp; &nbsp;{{ emploi.dateDebut |date('Y/m/d') }}</td> </tr>
-        <tr>   <td></td>  <td> niveau : licence Appliquée    </td> </tr>
-     
-   
-    <tr>
-       
-            <td></td>
-            <td>    Branche  :     {{ emploi.classe}} </td>
-       
-    </tr>
-    <tr>       <td></td>
-            <td> Nombre des élèves : {{ emploi.classe.nbeleve }}</td>
-
- 
-    </tr>
 
 
 
 
-        <tr>
-    
-            <td> De &nbsp; {{ emploi.dateDebut | date('d/m/Y') }}&nbsp; &nbsp;  Au  &nbsp; &nbsp; {{ emploi.datefin |date('d/m/Y') }}</td> </tr>
-    <tr>
-</table>
+<style> 
+  * { font-family: DejaVu Sans, sans-serif; }
+
+table {
+  max-width: 100%; 
+}
+</style>
+<p style="margin-left: 250px; margin-bottom: 0px">جــــدول الأوقــــــــات</p>
+ <p style="margin-left: 250px; margin-bottom: 0px">  {{ emploi.dateDebut | date('d/m/Y') }}    =>          {{ emploi.datefin | date('d/m/Y') }}</p>
+ <p style="margin-left: 360px; margin-bottom: 0px">  وزارة الــدفـــــاع الـوطـــنــي</p>
+ <p style="margin-left: 420px; margin-bottom: 0px"> جـــيـش الــطــيــران </p>
+             <p style="margin-left: 210px;">الـــمـــــســتـــوى: الشهادة الوطنية للإجازة التطبيقيـَة</p>
+ <p style="margin-left: 170px;">  الإخـــتـــصـــاص: "{{ emploi.classe}}" </p>
+  <p style="margin-left: 420px;">عـديد التـلامــذة: &nbsp;&nbsp;&nbsp; {{ emploi.classe.nbeleve }}</p>
+
    
 <br><br><br>
 <div ><table class="table table-bordered text-center" border="1">
@@ -67,12 +47,12 @@
 
  {% if detail.seance.jour == "lundi" %}
     {% if detail.matiere == NULL and  detail.autre == NULL  %}
-         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"></a></td> 
+         <td></td> 
     {% elseif detail.matiere != NULL  %}
 
-         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><label  > {{ detail.matiere }}</label> <br><label  > {{ detail.NbHeureR }}/{{ detail.matiere.NhTotal }}  <label/><label  > {{ detail.enseignant }}   <label/></a></td> 
+         <td> {{ detail.matiere }}<br>{{ detail.NbHeureR }}/{{ detail.matiere.NhTotal }}  <label  > {{ detail.enseignant }}   <label/></a></td> 
         {% else %}
-        <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"> <label  > {{ detail.autre }}   <label/>  </a></td> 
+        <td> <label  > {{ detail.autre }}   <label/>  </a></td> 
 
     {% endif %}
 {% endif %}
@@ -91,12 +71,12 @@
 
  {% if detail.seance.jour == "mardi" %}
     {% if detail.matiere == NULL and  detail.autre == NULL  %}
-         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"></a></td> 
+         <td></td> 
     {% elseif detail.matiere != NULL  %}
 
-         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><label  > {{ detail.matiere }}</label> <br><label  > {{ detail.NbHeureR }}/{{ detail.matiere.NhTotal }}  <label/><label  > {{ detail.enseignant }}   <label/></a></td> 
+         <td><label  > {{ detail.matiere }}</label> <br><label  > {{ detail.NbHeureR }}/{{ detail.matiere.NhTotal }}  <label/><label  > {{ detail.enseignant }}   <label/></td> 
         {% else %}
-        <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"> <label  > {{ detail.autre }}   <label/>  </a></td> 
+        <td> <label  > {{ detail.autre }}   <label/>  </td> 
 
     {% endif %}
 {% endif %}
@@ -204,8 +184,15 @@
 
      
     </table>
-     
-       
+     <p style="margin-left: 450px; margin-bottom: 0px">المرسل اليهم</p>
+ <p style="margin-left: 250px; margin-bottom: 0px">أمير اللواء رئيس اركان جيش الطيران(كرد خير) </p>
+ <p style="margin-left: 170px; margin-bottom: 0px">السيد العميد مدير التعليم العالي العسكري والبحث العلمي </p>
+ <p style="margin-left: 420px; margin-bottom: 0px"> نشرة داخلية عامة </p>
+
+   <table class="table table-bordered text-center">
+   <tr><td> <p style="text-align:center;font-size: 13px;"> العميد حمودة بسيس آمر مدرسة الاختصاصات الجوية </p>   </td><td> <p style="text-align:center; font-size: 13px;">المقدم نادر المصمودي مدير الدراسات</p></td></tr>
+  
+   </table>    
 </div>
 </body>
 </html>

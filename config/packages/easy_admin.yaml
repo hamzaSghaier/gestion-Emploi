@@ -220,12 +220,14 @@ easy_admin:
                   - dateDebut
                   # - DateFin
                   - classe
+                  - semestre
         DetailsEmploi:
             class: App\Entity\DetailsEmploi
             edit:
               fields:
                   - Matiere
                   - autre
+                  
                   # - matieres
                   # - { property: 'matieres', type: 'choice' }
 

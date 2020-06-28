@@ -34,9 +34,14 @@ class Emploi
     private $classe;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\DetailsEmploi", mappedBy="emlpoi")
+     * @ORM\OneToMany(targetEntity="App\Entity\DetailsEmploi", mappedBy="emlpoi",)
      */
     private $detailsEmplois;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $semestre;
 
  
     public function __construct()
@@ -120,6 +125,18 @@ class Emploi
     public function __toString()
     {
         return "Emploi de ". $this->dateDebut->format('Y-m-d');
+    }
+
+    public function getSemestre(): ?int
+    {
+        return $this->semestre;
+    }
+
+    public function setSemestre(int $semestre): self
+    {
+        $this->semestre = $semestre;
+
+        return $this;
     }
 
 

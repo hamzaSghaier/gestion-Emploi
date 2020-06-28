@@ -44,6 +44,11 @@ class Affecter
      */
     private $enseignant;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $conteur;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -81,6 +86,18 @@ class Affecter
     public function setEnseignant(?Enseignant $enseignant): self
     {
         $this->enseignant = $enseignant;
+
+        return $this;
+    }
+
+    public function getConteur(): ?float
+    {
+        return $this->conteur;
+    }
+
+    public function setConteur(?float $conteur): self
+    {
+        $this->conteur = $conteur;
 
         return $this;
     }

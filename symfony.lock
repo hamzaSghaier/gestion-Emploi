@@ -1,4 +1,10 @@
 {
+    "ar-php/ar-php": {
+        "version": "v1.0"
+    },
+    "arutil/ar-php": {
+        "version": "0.1.1"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -97,8 +103,14 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "kylekatarnls/update-helper": {
+        "version": "1.2.1"
+    },
     "monolog/monolog": {
         "version": "1.25.3"
+    },
+    "nesbot/carbon": {
+        "version": "1.39.1"
     },
     "nikic/php-parser": {
         "version": "v4.4.0"
@@ -515,6 +527,9 @@
     "symfony/yaml": {
         "version": "v4.4.7"
     },
+    "tecnickcom/tcpdf": {
+        "version": "6.3.5"
+    },
     "twig/extra-bundle": {
         "version": "v3.0.3"
     },
@@ -523,6 +538,9 @@
     },
     "webmozart/assert": {
         "version": "1.8.0"
+    },
+    "whiteoctober/tcpdf-bundle": {
+        "version": "1.1.2"
     },
     "zendframework/zend-code": {
         "version": "3.4.1"

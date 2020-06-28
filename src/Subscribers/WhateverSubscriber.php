@@ -17,6 +17,7 @@ use App\Repository\DisponibileRepository;
 use App\Repository\AffecterRepository;
 use App\Repository\EmploiRepository;
 use App\Repository\MatiereRepository;
+use App\Repository\EnseignantRepository;
 
 
 use App\Repository\DetailsEmploiRepository;
@@ -36,9 +37,10 @@ class WhateverSubscriber implements EventSubscriberInterface
    private   $empMa;
    private   $empPROF;
    private   $listeMatiereSelect;
+   private   $emprof;
   
 
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder,EntityManagerInterface $entityManager ,DisponibileRepository $Repository ,DetailsEmploiRepository $RepositoryMa,AffecterRepository $Repositoryprof, RouterInterface $router,  MatiereRepository $RepositoryMatiere)     {
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder,EntityManagerInterface $entityManager ,DisponibileRepository $Repository ,DetailsEmploiRepository $RepositoryMa,AffecterRepository $Repositoryprof, RouterInterface $router,  MatiereRepository $RepositoryMatiere,EnseignantRepository $emProfRepo)     {
          $this->passwordEncoder = $passwordEncoder;
          $this->emp = $Repository;
          $this->entitym = $entityManager;
@@ -46,6 +48,7 @@ class WhateverSubscriber implements EventSubscriberInterface
          $this->empMa = $RepositoryMa;
          $this->empPROF = $Repositoryprof;
          $this->listeMatiereSelect = $RepositoryMatiere;
+         $this->emprof = $emProfRepo;
 
         }
 
@@ -104,6 +107,8 @@ if($entity['name']=="DetailsEmploi")
             foreach ($ListempPROF as $variable) {
                if( $event->getSubject()->getMatiere() == $variable->getMatiere())
                {
+                   //dump( $this->emprof->find($variable->getEnseignant()->getId())->getDisponibiles());die;
+                  // if($event->getSubject()->getEnseignant()->getDisponibiles())
                 $event->getSubject()->setEnseignant($variable->getEnseignant());
                }
             }
@@ -120,7 +125,7 @@ if($entity['name']=="DetailsEmploi")
 
                 }
                  
-            if($max<=$mat){
+            if(($max<=$mat)  ){
             $event->getSubject()->setNbHeureR($max+1.5);
                // 
                $this->entitym->persist($event->getSubject());
