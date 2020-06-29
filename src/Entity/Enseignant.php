@@ -63,7 +63,7 @@ class Enseignant
     private $Cin;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Disponibile", inversedBy="enseignants",fetch="EAGER")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Disponibile", inversedBy="enseignants",fetch="EXTRA_LAZY")
      */
     private $disponibles;
 

@@ -49,6 +49,11 @@ class DetailsEmploi
      */
     private $autre;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $alert;
+
 
 
 
@@ -150,6 +155,18 @@ class DetailsEmploi
     public function setAutre(string $autre): self
     {
         $this->autre = $autre;
+
+        return $this;
+    }
+
+    public function getAlert(): ?string
+    {
+        return $this->alert;
+    }
+
+    public function setAlert(?string $alert): self
+    {
+        $this->alert = $alert;
 
         return $this;
     }

@@ -28,9 +28,9 @@ table {
    
 <br><br><br>
 <div ><table class="table table-bordered text-center" border="1">
-        <tr> <th></th>
+        <tr style="font-size: 10px;"> <th></th>
         <th>08:05 -> 09:35</th>
-        <th>09:50 -> 11:20</th>
+        <th >09:50 -> 11:20</th>
         <th>11:25 -> 12:55</th>
         <th>13:45 -> 15:15</th>
         <th>15:25 -> 16:55</th>
@@ -41,18 +41,18 @@ table {
            
         </tr>
 <tr>
-   <th>lundi</th>    
+   <th style="font-size: 10px;">lundi</th>    
         {% for detail in emploi.detailsEmplois %}
 
 
  {% if detail.seance.jour == "lundi" %}
-    {% if detail.matiere == NULL and  detail.autre == NULL  %}
+   {% if detail.matiere == NULL and  detail.autre == NULL  %}
          <td></td> 
     {% elseif detail.matiere != NULL  %}
 
-         <td> {{ detail.matiere }}<br>{{ detail.NbHeureR }}/{{ detail.matiere.NhTotal }}  <label  > {{ detail.enseignant }}   <label/></a></td> 
+         <td style="font-size: 12px;"><label  > {{ detail.matiere }}</label> <br><label  > {{ detail.NbHeureR }}/{{ detail.matiere.NhTotal }}  <label/><label  > {{ detail.enseignant }}   <label/></td> 
         {% else %}
-        <td> <label  > {{ detail.autre }}   <label/>  </a></td> 
+        <td style="font-size: 12px;"> <label  > {{ detail.autre }}   <label/>  </td> 
 
     {% endif %}
 {% endif %}
@@ -64,19 +64,19 @@ table {
  </tr>
 
 <tr>
-     <th>mardi</th>  
+     <th style="font-size: 10px;">mardi</th>  
         {% for detail in emploi.detailsEmplois %}
 
 
 
  {% if detail.seance.jour == "mardi" %}
-    {% if detail.matiere == NULL and  detail.autre == NULL  %}
+ {% if detail.matiere == NULL and  detail.autre == NULL  %}
          <td></td> 
     {% elseif detail.matiere != NULL  %}
 
-         <td><label  > {{ detail.matiere }}</label> <br><label  > {{ detail.NbHeureR }}/{{ detail.matiere.NhTotal }}  <label/><label  > {{ detail.enseignant }}   <label/></td> 
+         <td style="font-size: 12px;"><label  > {{ detail.matiere }}</label> <br><label  > {{ detail.NbHeureR }}/{{ detail.matiere.NhTotal }}  <label/><label  > {{ detail.enseignant }}   <label/></td> 
         {% else %}
-        <td> <label  > {{ detail.autre }}   <label/>  </td> 
+        <td style="font-size: 12px;"> <label  > {{ detail.autre }}   <label/>  </td> 
 
     {% endif %}
 {% endif %}
@@ -87,20 +87,19 @@ table {
 
  </tr>
  <tr>
-     <th>mercredi</th>  
+     <th style="font-size: 10px;">mercredi</th>  
 {% for detail in emploi.detailsEmplois %}
 
 
 
  {% if detail.seance.jour == "mercredi" %}
-
-    {% if detail.matiere == NULL and  detail.autre == NULL  %}
-         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"></a></td> 
+ {% if detail.matiere == NULL and  detail.autre == NULL  %}
+         <td></td> 
     {% elseif detail.matiere != NULL  %}
 
-         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><label  > {{ detail.matiere }}</label> <br><label  > {{ detail.NbHeureR }}/{{ detail.matiere.NhTotal }}  <label/><label  > {{ detail.enseignant }}   <label/></a></td> 
+         <td style="font-size: 12px;"><label  > {{ detail.matiere }}</label> <br><label  > {{ detail.NbHeureR }}/{{ detail.matiere.NhTotal }}  <label/><label  > {{ detail.enseignant }}   <label/></td> 
         {% else %}
-        <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"> <label  > {{ detail.autre }}   <label/>  </a></td> 
+        <td style="font-size: 12px;"> <label  > {{ detail.autre }}   <label/>  </td> 
 
     {% endif %}
 
@@ -112,19 +111,19 @@ table {
 
  </tr>
  <tr>
-     <th>jeudi</th>  
+     <th style="font-size: 10px;">jeudi</th>  
         {% for detail in emploi.detailsEmplois %}
 
 
 
  {% if detail.seance.jour == "jeudi" %}
-    {% if detail.matiere == NULL and  detail.autre == NULL  %}
-         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"></a></td> 
+     {% if detail.matiere == NULL and  detail.autre == NULL  %}
+         <td></td> 
     {% elseif detail.matiere != NULL  %}
 
-         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><label  > {{ detail.matiere }}</label> <br><label  > {{ detail.NbHeureR }}/{{ detail.matiere.NhTotal }}  <label/><label  > {{ detail.enseignant }}   <label/></a></td> 
+         <td style="font-size: 12px;"><label  > {{ detail.matiere }}</label> <br><label  > {{ detail.NbHeureR }}/{{ detail.matiere.NhTotal }}  <label/><label  > {{ detail.enseignant }}   <label/></td> 
         {% else %}
-        <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"> <label  > {{ detail.autre }}   <label/>  </a></td> 
+        <td style="font-size: 12px;"> <label  > {{ detail.autre }}   <label/>  </td> 
 
     {% endif %}
 {% endif %}
@@ -135,19 +134,19 @@ table {
 
  </tr>
  <tr>
-     <th>vendredi</th>  
+     <th style="font-size: 10px;">vendredi</th>  
         {% for detail in emploi.detailsEmplois %}
 
 
 
  {% if detail.seance.jour == "vendredi" %}
-     {% if detail.matiere == NULL and  detail.autre == NULL  %}
-         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"></a></td> 
+      {% if detail.matiere == NULL and  detail.autre == NULL  %}
+         <td></td> 
     {% elseif detail.matiere != NULL  %}
 
-         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><label  > {{ detail.matiere }}</label> <br><label  > {{ detail.NbHeureR }}/{{ detail.matiere.NhTotal }}  <label/><label  > {{ detail.enseignant }}   <label/></a></td> 
+         <td style="font-size: 12px;"><label  > {{ detail.matiere }}</label> <br><label  > {{ detail.NbHeureR }}/{{ detail.matiere.NhTotal }}  <label/><label  > {{ detail.enseignant }}   <label/></td> 
         {% else %}
-        <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"> <label  > {{ detail.autre }}   <label/>  </a></td> 
+        <td style="font-size: 12px;"> <label  > {{ detail.autre }}   <label/>  </td> 
 
     {% endif %}
 {% endif %}
@@ -158,19 +157,19 @@ table {
 
  </tr>
  <tr>
-     <th>samedi</th>  
+     <th style="font-size: 10px;">samedi</th>  
         {% for detail in emploi.detailsEmplois %}
 
 
 
  {% if detail.seance.jour == "samedi" %}
-    {% if detail.matiere == NULL and  detail.autre == NULL  %}
-         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"></a></td> 
+     {% if detail.matiere == NULL and  detail.autre == NULL  %}
+         <td></td> 
     {% elseif detail.matiere != NULL  %}
 
-         <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"><label  > {{ detail.matiere }}</label> <br><label  > {{ detail.NbHeureR }}/{{ detail.matiere.NhTotal }}  <label/><label  > {{ detail.enseignant }}   <label/></a></td> 
+         <td style="font-size: 12px;"><label  > {{ detail.matiere }}</label> <br><label  > {{ detail.NbHeureR }}/{{ detail.matiere.NhTotal }}  <label/><label  > {{ detail.enseignant }}   <label/></td> 
         {% else %}
-        <td><a  href="/?action=edit&entity=DetailsEmploi&menuIndex=10&submenuIndex=1&sortField=id&sortDirection=DESC&page=1&referer=%252F%253Faction%253Dlist%2526entity%253DDetailsEmploi%2526menuIndex%253D10%2526submenuIndex%253D1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&id={{ detail.id }}"> <label  > {{ detail.autre }}   <label/>  </a></td> 
+        <td style="font-size: 12px;"> <label  > {{ detail.autre }}   <label/>  </td> 
 
     {% endif %}
 {% endif %}

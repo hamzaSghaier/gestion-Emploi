@@ -34,18 +34,18 @@ class WhateverSubscriber implements EventSubscriberInterface
     private   $emp;
    private $entitym;
    private $route;
-   private   $empMa;
+   private   $empDetailsEmploi;
    private   $empPROF;
    private   $listeMatiereSelect;
    private   $emprof;
   
 
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder,EntityManagerInterface $entityManager ,DisponibileRepository $Repository ,DetailsEmploiRepository $RepositoryMa,AffecterRepository $Repositoryprof, RouterInterface $router,  MatiereRepository $RepositoryMatiere,EnseignantRepository $emProfRepo)     {
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder,EntityManagerInterface $entityManager ,DisponibileRepository $Repository ,DetailsEmploiRepository $RepositoryDetailsEmploi,AffecterRepository $Repositoryprof, RouterInterface $router,  MatiereRepository $RepositoryMatiere,EnseignantRepository $emProfRepo)     {
          $this->passwordEncoder = $passwordEncoder;
          $this->emp = $Repository;
          $this->entitym = $entityManager;
          $this->route = $router;
-         $this->empMa = $RepositoryMa;
+         $this->empDetailsEmploi = $RepositoryDetailsEmploi;
          $this->empPROF = $Repositoryprof;
          $this->listeMatiereSelect = $RepositoryMatiere;
          $this->emprof = $emProfRepo;
@@ -101,8 +101,9 @@ if($entity['name']=="DetailsEmploi")
                # code...
            
             $mat =  $event->getSubject()->getMatiere()->getNhTotal();
-            $ListMTaDet= $this->empMa->findAll();
+            $ListMTaDet= $this->empDetailsEmploi->findAll();
             $ListempPROF= $this->empPROF->findAll();
+            $ListDiponible= $this->emp->findAll();
             $max=0; 
             foreach ($ListempPROF as $variable) {
                if( $event->getSubject()->getMatiere() == $variable->getMatiere())
@@ -124,20 +125,49 @@ if($entity['name']=="DetailsEmploi")
                 }
 
                 }
-                 
-            if(($max<=$mat)  ){
-            $event->getSubject()->setNbHeureR($max+1.5);
-               // 
-               $this->entitym->persist($event->getSubject());
-               // actually executes the queries (i.e. the INSERT query)
-                     $this->entitym->flush();
-            }else{
-                $event->getSubject()->setMatiere(null);
-                $this->entitym->persist($event->getSubject());
-                 $this->entitym->flush();
+               $b = false;
+                foreach ($ListDiponible as $var) {
+                    if($var ==$event->getSubject()->getSeance() ){
 
+                    foreach($var->getEnseignants()->getValues() as $vart) {
+                       
+                        if($vart->getNomEnseignant() ==$event->getSubject()->getEnseignant()->getNomEnseignant() )
+                        {  
+                            
+                                  $b=true;
+            
+                        }
+                    }
+                  
             }
-          //  $this->addFlash('error', 'You cannot delete admin users.');
+        }
+
+if($b){
+       
+                if($max+1.5<=$mat)  {
+
+                    $event->getSubject()->setNbHeureR($max+1.5);
+                    
+                      
+                       $this->entitym->persist($event->getSubject());
+                       // actually executes the queries (i.e. the INSERT query)
+                             $this->entitym->flush();
+                    }else{
+                        $event->getSubject()->setMatiere(null);
+                        $event->getSubject()->setAlert(" nombre d'heures terminer");
+                        $this->entitym->persist($event->getSubject());
+                         $this->entitym->flush();
+        
+                    }
+                }
+                else{
+                  
+                    $event->getSubject()->setMatiere(null);
+                        $event->getSubject()->setAlert("Enseignant non disponible");
+                        $this->entitym->persist($event->getSubject());
+                         $this->entitym->flush(); 
+                }
+         
           
         }
                
